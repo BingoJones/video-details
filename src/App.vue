@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <InternetArchiveVideo v-bind:query="query"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import InternetArchiveVideo from './components/InternetArchiveVideo.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    InternetArchiveVideo
+  },
+  data: function() {
+    return {
+    };
+  },
+  computed: {
+    query: function() {
+      const pathname = window.location.pathname.slice(1);
+      const defaultQuery = 'InformationM';
+
+      return pathname || defaultQuery;
+    }
   }
 }
 </script>
@@ -21,8 +32,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 </style>
